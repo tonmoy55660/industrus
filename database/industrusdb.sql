@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2020 at 05:46 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: May 14, 2020 at 04:16 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,7 +41,7 @@ CREATE TABLE `admin_login` (
 --
 
 INSERT INTO `admin_login` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'Marchandiser', 'marchandise@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1),
+(1, 'Marchandiser', 'merchandiser@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1),
 (2, 'Knitting', 'knitting@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 2),
 (3, 'cutting', 'cutting@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 3),
 (4, 'sewing', 'sewing@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 4),
@@ -96,7 +96,8 @@ CREATE TABLE `measurement_pattern` (
 
 INSERT INTO `measurement_pattern` (`id`, `order_id`, `reference`, `description`, `tolerance`, `s_size`, `m_size`, `l_size`, `xl_size`, `xxl_size`, `xxxl_size`) VALUES
 (1, '5eb8058fd81c9', 'Collar', 'Collar measurement', '1', '12', '13', '14', '15', '16', '17'),
-(2, '5eb8058fd81c9', 'Shouldar', 'shoulder measurement', '5', '20', '21', '22', '23', '24', '25');
+(2, '5eb8058fd81c9', 'Shouldar', 'shoulder measurement', '5', '20', '21', '22', '23', '24', '25'),
+(3, '5ebcc39d71f4c', '001', 'qqq', '0.5', '20', '22', '24', '26', '28', '30');
 
 -- --------------------------------------------------------
 
@@ -122,10 +123,7 @@ CREATE TABLE `order_colors_quantity` (
 --
 
 INSERT INTO `order_colors_quantity` (`id`, `order_id`, `color`, `sQuantity`, `mQuantity`, `lQuantity`, `xlQuantity`, `xxlQuantity`, `xxxlQuantity`, `total`) VALUES
-(1, '5eb8058fd81c9', 'Black', '50', '50', '50', '', '', '', 150),
-(2, '5eb8058fd81c9', 'White', '50', '50', '50', '50', '50', '50', 300),
-(3, '5eba860304764', 'Red', '2', '2', '2', '2', '1', '1', 10),
-(4, '5eba860304764', 'Blue', '2', '2', '2', '2', '1', '1', 10);
+(1, '5ebcc39d71f4c', 'Red', '500', '500', '500', '500', '500', '600', 3000);
 
 -- --------------------------------------------------------
 
@@ -166,8 +164,7 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`orderId`, `user_id`, `buyerName`, `companyName`, `productName`, `productPrice`, `composition`, `fabricsWeight`, `samplePcs`, `fabricConstruction`, `febricDescription`, `productSketch`, `yarnDescription`, `frontMeasurementSketch`, `backMeasurementSketch`, `collarMeasurementSketch`, `frontSewingSkecth`, `frontPlacketSkecth`, `slideSlitSkecth`, `pcs_per_box`, `shipmentDate`, `detailOrderDate`, `sampleOrderDate`, `finishedDate`, `status`) VALUES
-('5eb8058fd81c9', 1, 'Tanveer', 'AJ Garments', 'Men full sleeve', '6.50', '65% cotton', '125 GSM', '10', 'combed cottton single pique', 'combed', '20200510154551_18-14-LineDrawing.jpg', 'Yarn GSM 100', '20200510155259_blog-1.jpg', '20200510155259_blog-2.jpg', '20200510155259_blog-3.jpg', '20200510155259_blog-5.jpg', '20200510155259_blog-6.jpg', '20200510155259_blog-detail.jpg', '10', '05/23/2020', '05/10/2020', '05/10/2020', '05/11/2020', 1),
-('5eba860304764', 2, 'Sadia', 'Safwan textile', 'T-Shirt ', '12', '100% cotton', '100', '20', 'wefrwjgpjr', 'qwertyupls', '20200512131827_top-view-of-assorted-colored-row-boats-929032.jpg', 'wekfbwfoh', '', '', '', '', '', '', '', '', '', '05/12/2020', '', 3);
+('5ebcc39d71f4c', 1, 'Jhon', 'AX', 'T-SHIRT', '7', '100% cotton', '200GSM', '20', 'QQQQQ', 'QQQQQ', '20200514060549_1.jpg', 'QQQQQQ', '20200514061033_2.jpg', '20200514061033_3.png', '20200514061033_5.jpg', '20200514061033_7.jpg', '20200514061033_8.jpg', '20200514061033_9.png', '200', '05/20/2020', '05/14/2020', '05/14/2020', '05/14/2020', 7);
 
 -- --------------------------------------------------------
 
@@ -191,10 +188,10 @@ CREATE TABLE `order_tasks` (
 --
 
 INSERT INTO `order_tasks` (`id`, `order_id`, `department_id`, `assign_days`, `started_at`, `finished_at`, `status`, `flag`) VALUES
-(1, '5eb8058fd81c9', 1, 3, '05/11/2020', '05/11/2020', 2, 0),
-(2, '5eb8058fd81c9', 2, 3, '05/12/2020', '05/11/2020', 2, 1),
-(3, '5eb8058fd81c9', 3, 3, '05/12/2020', '05/11/2020', 2, 1),
-(4, '5eb8058fd81c9', 4, 3, '05/12/2020', '05/11/2020', 2, 1);
+(1, '5ebcc39d71f4c', 1, 2, '05/14/2020', '05/14/2020', 2, 0),
+(2, '5ebcc39d71f4c', 2, 2, '05/15/2020', '05/14/2020', 2, 1),
+(3, '5ebcc39d71f4c', 3, 1, '05/15/2020', '05/14/2020', 2, 1),
+(4, '5ebcc39d71f4c', 4, 1, '05/15/2020', '05/14/2020', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -218,8 +215,7 @@ CREATE TABLE `package_box_details` (
 --
 
 INSERT INTO `package_box_details` (`id`, `order_id`, `size`, `length`, `width`, `height`, `grossWeight`, `nertWeight`) VALUES
-(1, '5eb8058fd81c9', 's', '12', '12', '12', '5', '6'),
-(2, '5eb8058fd81c9', 'm', '12', '12', '12', '5', '6');
+(1, '5ebcc39d71f4c', 's', '15', '20', '25', '50', '50');
 
 -- --------------------------------------------------------
 
@@ -239,7 +235,7 @@ CREATE TABLE `package_description` (
 --
 
 INSERT INTO `package_description` (`id`, `order_id`, `reference`, `description`) VALUES
-(1, '5eb8058fd81c9', 'barcode', 'barcode needed');
+(1, '5ebcc39d71f4c', '111', 'qqqq');
 
 -- --------------------------------------------------------
 
@@ -260,9 +256,9 @@ CREATE TABLE `production_track` (
 --
 
 INSERT INTO `production_track` (`id`, `order_id`, `production_date`, `production_amount`, `department_id`) VALUES
-(1, '5eb8058fd81c9', '05/11/2020', 450, 2),
-(2, '5eb8058fd81c9', '05/11/2020', 450, 3),
-(3, '5eb8058fd81c9', '05/11/2020', 450, 4);
+(1, '5ebcc39d71f4c', '05/14/2020', 3000, 2),
+(2, '5ebcc39d71f4c', '05/14/2020', 3000, 3),
+(3, '5ebcc39d71f4c', '05/14/2020', 3000, 4);
 
 -- --------------------------------------------------------
 
@@ -289,8 +285,7 @@ CREATE TABLE `product_costing` (
 --
 
 INSERT INTO `product_costing` (`id`, `order_id`, `fabAmount`, `fabCost`, `knitCost`, `dyeCost`, `stitching`, `cutting`, `packaging`, `totalPrice`, `perPiecePrice`) VALUES
-(1, '5eb8058fd81c9', '10', '100', '50', '5', '0.1', '0.2', '0.3', '1820.00', '4.04'),
-(2, '5eba860304764', '100', '20', '15', '10', '5', '5', '5', '4800.00', '240.00');
+(1, '5ebcc39d71f4c', '100', '50', '40', '30', '2', '2', '1', '27000.00', '9.00');
 
 -- --------------------------------------------------------
 
@@ -313,8 +308,7 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`id`, `name`, `email`, `password`, `company_name`, `phone`, `token`) VALUES
-(1, 'tanveer', 'tanveershuvos@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'abc', '01683182337', ''),
-(2, 'Sadia Jahan', 'tonmoybhuiyan01@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'Safwan Textile ', '01302870784', '');
+(1, 'Jhon', 'touhid0770@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'AX', '01302870784', '');
 
 -- --------------------------------------------------------
 
@@ -334,8 +328,7 @@ CREATE TABLE `yarn_color` (
 --
 
 INSERT INTO `yarn_color` (`id`, `yarn_desc_id`, `color`, `yarn_color`) VALUES
-(1, '5eb8073b919b9', 'Black', 'white'),
-(2, '5eb8073b919b9', 'White', 'black');
+(1, '5ebcc4b9e23b4', 'Red', 'white');
 
 -- --------------------------------------------------------
 
@@ -355,7 +348,7 @@ CREATE TABLE `yarn_description` (
 --
 
 INSERT INTO `yarn_description` (`id`, `order_id`, `reference`, `description`) VALUES
-('5eb8073b919b9', '5eb8058fd81c9', 'Front', 'Front placket');
+('5ebcc4b9e23b4', '5ebcc39d71f4c', '001', 'qqqq');
 
 --
 -- Indexes for dumped tables
@@ -464,13 +457,13 @@ ALTER TABLE `deaprtments`
 -- AUTO_INCREMENT for table `measurement_pattern`
 --
 ALTER TABLE `measurement_pattern`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_colors_quantity`
 --
 ALTER TABLE `order_colors_quantity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order_tasks`
@@ -482,7 +475,7 @@ ALTER TABLE `order_tasks`
 -- AUTO_INCREMENT for table `package_box_details`
 --
 ALTER TABLE `package_box_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `package_description`
@@ -500,19 +493,19 @@ ALTER TABLE `production_track`
 -- AUTO_INCREMENT for table `product_costing`
 --
 ALTER TABLE `product_costing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `yarn_color`
 --
 ALTER TABLE `yarn_color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
